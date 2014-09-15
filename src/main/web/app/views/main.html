@@ -1,0 +1,29 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+    <span ng-bind-html="alert.msg"></span>
+</alert>
+
+<div>
+    <h3>Welcome dear client!</h3>
+
+    <p class="lead">
+
+    <h4>Take a loan</h4>
+
+    <form role="form">
+
+        <div class="form-group">
+            <label for="job">Job</label>
+            <select id="job" class="form-control" ng-model="job">
+                <option>IT</option>
+                <option>FINANCE_SECTOR</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-default" ng-click="applyForLoan()">Apply for loan</button>
+    </form>
+
+    <hr/>
+
+    <div class="well">
+        The city you are looking for is: {{city}}
+    </div>
+</div>
