@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @TypeChecked
 @Configuration
-@EnableMongoRepositories
+@EnableMongoRepositories('pl.warsjawa')
 class DbConfiguration {
 
     @Bean
