@@ -11,9 +11,11 @@ import org.springframework.data.mongodb.core.MongoFactoryBean
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory
 import org.springframework.data.mongodb.core.WriteResultChecking
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 
 @TypeChecked
 @Configuration
+@EnableMongoRepositories
 class DbConfiguration {
 
     @Bean

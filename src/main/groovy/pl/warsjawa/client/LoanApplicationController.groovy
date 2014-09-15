@@ -1,4 +1,4 @@
-package pl.warsjawa.loan
+package pl.warsjawa.client
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
 import com.wordnik.swagger.annotations.Api
 import com.wordnik.swagger.annotations.ApiOperation
@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.*
 
 import javax.validation.constraints.NotNull
 
-import static pl.warsjawa.loan.UiApi.*
+import static org.springframework.web.bind.annotation.RequestMethod.POST
+import static pl.warsjawa.client.ClientServiceApi.*
 
 @CompileStatic
 @Slf4j
 @RestController
 @RequestMapping(API_URL)
-@Api(value = "loanApplication", description = "Entry point to the generation of a loan application")
+@Api(value = "client", description = "Client ")
 class LoanApplicationController {
 
     private final ServiceRestClient serviceRestClient
@@ -26,21 +27,20 @@ class LoanApplicationController {
     }
 
     @RequestMapping(
-            value = LOAN_APPLICATION_URL,
-            method = RequestMethod.PUT,
-            consumes = UI_API_VERSION_1,
-            produces = UI_API_VERSION_1)
+            value = CLIENT_URL,
+            method = POST,
+            consumes = APP_API_VERSION_1,
+            produces = APP_API_VERSION_1)
     @ApiOperation(value = "Sends a request ",
             notes = "This will asynchronously verify what's the probability of the user to be a fraud and will call LoanApplicationDecisionMaker")
     void checkIfUserIsFraud(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanApplicationDetails) {
-        log.info("Sending a request to [$Dependencies.FRED] to check if the client is a potential fraud")
-        serviceRestClient.forService(Dependencies.FRED.toString())
+        log.info("Sending a request to [$Dependencies.REPORTING] to check if the client is a potential fraud")
+        serviceRestClient.forService(Dependencies.REPORTING.toString())
                          .put()
-                         .onUrlFromTemplate(FRAUD_LOAN_APPLICATION_URL)
-                         .withVariables(loanApplicationId)
+                         .onUrl('/clients')
                          .body(loanApplicationDetails)
                          .withHeaders()
-                            .contentType(FRAUD_API_VERSION_1)
+                            .contentType(REPORTING_JSON_V1)
                          .andExecuteFor()
                          .ignoringResponse()
     }

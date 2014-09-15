@@ -1,8 +1,8 @@
 {
     "europe": {
-        "this": "pl/warsjawa/ui",
+        "this": "pl/warsjawa/client-service",
         "dependencies": {
-            "fred" : "pl/warsjawa/fraud-detection-service"
+            "reporting" : "pl/warsjawa/reporting-service"
         }
     }
 }

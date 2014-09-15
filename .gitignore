@@ -13,3 +13,4 @@ logs
 .java-version
 /out
 mongodb
+artifactstore

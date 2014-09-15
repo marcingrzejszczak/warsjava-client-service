@@ -1,8 +1,8 @@
-package pl.warsjawa.loan
+package pl.warsjawa.client
 
 
 public enum Dependencies {
-    FRED
+    REPORTING
 
     @Override
     String toString() {
