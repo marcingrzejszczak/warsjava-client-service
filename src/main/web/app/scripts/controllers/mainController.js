@@ -5,7 +5,7 @@
  * # MainCtrl
  */
 angular.module('BootstrapApplication.controllers')
-        .controller('MainCtrl', ['$scope', 'LoanService', function ($scope, LoanService) {
+        .controller('MainCtrl', ['$scope', 'ClientService', function ($scope, ClientService) {
             $scope.awesomeThings = [
                 'HTML5 Boilerplate',
                 'AngularJS',
@@ -13,13 +13,13 @@ angular.module('BootstrapApplication.controllers')
             ];
             $scope.alerts = [];
 
-            $scope.city = '';
-
-            $scope.applyForLoan = function() {
-                LoanService.applyForLoan($scope.job, function(data) {
-                    $scope.city = data;
-                });
+            $scope.getClients = function() {
+                ClientService.getClients(function(data) {
+                        $scope.clients = data;
+                    });
             };
+
+            $scope.getClients();
 
             $scope.closeAlert = function (index) {
                 $scope.alerts.splice(index, 1);

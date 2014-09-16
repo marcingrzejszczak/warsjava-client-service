@@ -3,27 +3,30 @@
 </alert>
 
 <div>
-    <h3>Welcome dear client!</h3>
+    <h3>Your clients</h3>
 
     <p class="lead">
 
-    <h4>Take a loan</h4>
-
     <form role="form">
-
         <div class="form-group">
-            <label for="job">Job</label>
-            <select id="job" class="form-control" ng-model="job">
-                <option>IT</option>
-                <option>FINANCE_SECTOR</option>
-            </select>
+            <table class="table">
+                <thead>
+                    <td>#</td>
+                    <td>id</td>
+                    <td>First name</td>
+                    <td>Last name</td>
+                </thead>
+                <tr data-ng-repeat="client in clients._embedded.clients | orderBy:'name'">
+                    <td>{{ $index }}</td>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.lastName }}</td>
+                </tr>
+            </table>
         </div>
-        <button type="button" class="btn btn-default" ng-click="applyForLoan()">Apply for loan</button>
+        <button type="button" class="btn btn-default" ng-click="getClients()">Refresh</button>
     </form>
 
     <hr/>
 
-    <div class="well">
-        The city you are looking for is: {{city}}
-    </div>
 </div>
