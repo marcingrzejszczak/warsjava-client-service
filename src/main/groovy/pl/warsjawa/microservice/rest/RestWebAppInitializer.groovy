@@ -1,4 +1,4 @@
-package pl.warsjawa.microservice.config
+package pl.warsjawa.microservice.rest
 
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer
@@ -14,7 +14,7 @@ class RestWebAppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return [RepositoryRestMvcConfiguration]
+        return [RepositoryRestMvcConfiguration, RestConfiguration, CustomSwaggerConfiguration]
     }
 
     @Override

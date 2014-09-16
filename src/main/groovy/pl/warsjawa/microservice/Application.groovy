@@ -1,10 +1,10 @@
 package pl.warsjawa.microservice
-
 import com.ofg.infrastructure.environment.EnvironmentSetupVerifier
 import groovy.transform.TypeChecked
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration
 import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -15,9 +15,9 @@ import static com.ofg.config.BasicProfiles.*
 
 @TypeChecked
 @Configuration
-@EnableAutoConfiguration(exclude = MetricRepositoryAutoConfiguration)
+@EnableAutoConfiguration(exclude = [MetricRepositoryAutoConfiguration, RepositoryRestMvcAutoConfiguration])
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ComponentScan(basePackages = ["pl.warsjawa.microservice", "pl.warsjawa"])
+@ComponentScan(basePackages = ["pl.warsjawa.microservice.config"])
 @EnableCaching
 @EnableAsync
 class Application {
