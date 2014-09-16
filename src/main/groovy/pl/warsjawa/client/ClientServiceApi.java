@@ -11,4 +11,5 @@ public class ClientServiceApi {
 
     public static final String REPORTING_NAME = "vnd.pl.warsjawa.reporting-service";
     public static final String REPORTING_JSON_V1 = REPORTING_NAME + JSON_V1;
+    public static final String REPORTING_API_VERSION_1 = APPLICATION + "/" + REPORTING_JSON_V1;
 }

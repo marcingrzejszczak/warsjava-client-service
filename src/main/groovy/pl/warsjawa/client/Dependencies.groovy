@@ -1,7 +1,6 @@
 package pl.warsjawa.client
 
-
-public enum Dependencies {
+enum Dependencies {
     REPORTING
 
     @Override

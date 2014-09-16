@@ -4,7 +4,6 @@ import groovy.transform.TypeChecked
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration
 import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -15,7 +14,7 @@ import static com.ofg.config.BasicProfiles.*
 
 @TypeChecked
 @Configuration
-@EnableAutoConfiguration(exclude = [MetricRepositoryAutoConfiguration, RepositoryRestMvcAutoConfiguration])
+@EnableAutoConfiguration(exclude = [MetricRepositoryAutoConfiguration])
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @ComponentScan(basePackages = ["pl.warsjawa.microservice.config"])
 @EnableCaching

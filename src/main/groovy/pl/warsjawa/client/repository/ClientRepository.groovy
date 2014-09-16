@@ -6,8 +6,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 import pl.warsjawa.client.domain.Client
 
 @RepositoryRestResource(collectionResourceRel = "clients", path = "clients")
-public interface ClientRepository extends MongoRepository<Client, String> {
+interface ClientRepository extends MongoRepository<Client, String> {
 
-    List<Client> findByName(@Param("name") String name);
+    List<Client> findByName(@Param("name") String name)
+    List<Client> findByLastName(@Param("lastName") String lastName)
 
 }

@@ -15,16 +15,12 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @TypeChecked
 @Configuration
-@EnableMongoRepositories('pl.warsjawa')
+@EnableMongoRepositories('pl.warsjawa.client')
 class DbConfiguration {
 
     @Bean
     MongoFactoryBean mongo(@Value('${mongodb.host:localhost}') String host, @Value('${mongodb.port:27017}') Integer port) {
-        MongoFactoryBean mongo = new MongoFactoryBean()
-        mongo.setHost(host)
-        mongo.setPort(port)
-        mongo.setWriteConcern(WriteConcern.FSYNCED)
-        return mongo
+        return new MongoFactoryBean(host: host, port: port, writeConcern: WriteConcern.FSYNCED)
     }
 
     @Bean
@@ -35,7 +31,7 @@ class DbConfiguration {
     @Bean
     MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory) {
         MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory)
-        mongoTemplate.setWriteResultChecking(WriteResultChecking.EXCEPTION)
+        mongoTemplate.writeResultChecking = WriteResultChecking.EXCEPTION
         return mongoTemplate
     }
 
