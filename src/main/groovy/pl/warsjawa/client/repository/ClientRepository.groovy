@@ -9,8 +9,8 @@ import pl.warsjawa.client.domain.Client
 @RepositoryRestResource(collectionResourceRel = "clients", path = "clients")
 interface ClientRepository extends MongoRepository<Client, String> {
 
-    @RestResource(path = 'name', rel = 'name')
-    List<Client> findByName(@Param("name") String name)
+    @RestResource(path = 'firstName', rel = 'firstName')
+    List<Client> findByFirstName(@Param("firstName") String firstName)
 
     @RestResource(path = 'lastName', rel = 'lastName')
     List<Client> findByLastName(@Param("lastName") String lastName)

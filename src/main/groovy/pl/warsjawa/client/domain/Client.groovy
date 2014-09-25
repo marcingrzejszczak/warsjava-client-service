@@ -4,5 +4,5 @@ import org.springframework.data.annotation.Id
 
 class Client {
     @Id String id
-    String name, lastName
+    String firstName, lastName
 }
