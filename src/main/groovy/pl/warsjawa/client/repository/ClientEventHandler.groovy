@@ -21,37 +21,25 @@ class ClientEventHandler {
     }
 
     @HandleAfterCreate void handleAfterCreate(Client client) {
-        updateReportingService(client, CREATE)
-    }
-
-    @HandleAfterSave void handleAfterSave(Client client) {
-        updateReportingService(client, SAVE)
-    }
-
-    @HandleAfterDelete void handleAfterDelete(Client client) {
-        updateReportingService(client, DELETE)
-    }
-
-
-    private void updateReportingService(Client client, ActionType actionType) {
         serviceRestClient.forService(REPORTING.toString())
-                         .put()
-                         .onUrlFromTemplate('/client/{clientId}')
-                            .withVariables(client.id)
-                         .body(buildBody(client, actionType))
-                         .withHeaders()
-                            .contentType(REPORTING_API_VERSION_1)
-                         .andExecuteFor()
-                         .ignoringResponse()
+                .post()
+                .onUrlFromTemplate('/clients')
+                .body(buildCreateRequestBody(client, actionType))
+                .withHeaders()
+                    .contentType(REPORTING_API_VERSION_1)
+                .andExecuteFor()
+                .ignoringResponse()
     }
 
-    private String buildBody(Client client, ActionType actionType) {
-        return """
-               {
-                "actionType":"${actionType.toString()}"
-                "client":"${new JsonBuilder(client).toPrettyString()}"
-               }
-               """
+    private String buildCreateRequestBody(Client client) {
+        def builder = new groovy.json.JsonBuilder()
+        builder {
+            name client.name
+            lastName client.lastName
+            loanId client.id
+        }
+
+        return builder.toString()
     }
 
     enum ActionType {
