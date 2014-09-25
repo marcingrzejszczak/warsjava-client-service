@@ -1,6 +1,6 @@
 {
     "europe": {
-        "this": "pl/warsjawa/client-service",
+        "this": "pl/warsjawa/clients-service",
         "dependencies": {
             "reporting" : "pl/warsjawa/reporting-service"
         }
