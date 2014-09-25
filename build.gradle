@@ -122,6 +122,7 @@ dependencies {
     compile 'com.ofg:micro-infra-spring:0.2.2'
     compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.46.1'
     compile 'org.springframework.data:spring-data-rest-webmvc:2.2.0.RELEASE'
+    compile 'com.github.fakemongo:fongo:1.5.5'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
