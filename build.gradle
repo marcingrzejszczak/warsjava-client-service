@@ -120,7 +120,6 @@ dependencies {
     compile 'net.sf.ehcache:ehcache:2.8.3'
     // microservices
     compile 'com.ofg:micro-infra-spring:0.2.2'
-    compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.46.1'
     compile 'org.springframework.data:spring-data-rest-webmvc:2.2.0.RELEASE'
     compile 'com.github.fakemongo:fongo:1.5.5'
 
