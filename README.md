@@ -1,4 +1,4 @@
-boot-microservice-gui
+warsjava-client-service
 =======================
 
 This is an extension of the non-GUI boot-microservice. To read about the backend side, please refer to 
