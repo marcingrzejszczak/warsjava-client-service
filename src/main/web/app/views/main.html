@@ -16,7 +16,7 @@
                     <td>First name</td>
                     <td>Last name</td>
                 </thead>
-                <tr data-ng-repeat="client in clients._embedded.clients | orderBy:'name'">
+                <tr data-ng-repeat="client in clients._embedded.clients | orderBy:'firstName'">
                     <td>{{ $index }}</td>
                     <td>{{ client.id }}</td>
                     <td>{{ client.firstName }}</td>
