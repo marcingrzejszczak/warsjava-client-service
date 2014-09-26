@@ -31,7 +31,7 @@ class ClientEventHandler {
     private String buildCreateRequestBody(Client client) {
         def builder = new groovy.json.JsonBuilder()
         builder {
-            name client.name
+            firstName client.firstName
             lastName client.lastName
             loanId client.id
         }
